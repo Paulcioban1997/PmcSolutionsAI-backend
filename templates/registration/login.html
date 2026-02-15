@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion | PMC Solutions AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #2a7bff;
+            --dark: #05070c;
+            --card-bg: #0b0f1a;
+            --text-muted: #cbd6ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(58, 123, 255, 0.2);
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: var(--blue);
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        button {
+            padding: 12px;
+            background: var(--blue);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Espace Client</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Nom d'utilisateur" required autofocus>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Se Connecter</button>
+        </form>
+        <a href="/" class="back-link">Retour à l'accueil</a>
+    </div>
+</body>
+
+</html>

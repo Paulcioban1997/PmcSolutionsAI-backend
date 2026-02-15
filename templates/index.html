@@ -1,0 +1,564 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMC Solutions AI | Intelligent Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #3a7bff;
+      --dark: #050607;
+      --card-bg: #0b0f1a;
+      --text-muted: #cbd6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      background: #050607;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.3s;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(5, 6, 7, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 100;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 16px;
+    }
+
+    .brand .ai {
+      color: var(--blue);
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .menu a:hover {
+      color: var(--blue);
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lang-btn:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 80px 16px 60px;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background: url("{% static 'img/1000025891.jpg' %}") center / cover no-repeat;
+      filter: brightness(0.4) saturate(1.2);
+      /* Darker overlay for readability */
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 24px;
+      place-items: center;
+      max-width: 800px;
+      margin-top: 55vh;
+      /* Pousse le texte TRES bas */
+    }
+
+    .title {
+      font-size: clamp(32px, 5vw, 64px);
+      letter-spacing: 2px;
+      margin: 0;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(58, 123, 255, 0.5);
+    }
+
+    .tagline {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 0 16px rgba(58, 123, 255, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 24px rgba(58, 123, 255, 0.7);
+    }
+
+    /* Features Section */
+    .features {
+      position: relative;
+      z-index: 2;
+      background: var(--dark);
+      padding: 80px 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 50px;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 30px;
+      border-radius: 16px;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--blue);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background: #020305;
+      padding: 40px 5%;
+      text-align: center;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="brand">PMC SOLUTIONS <span class="ai">AI</span></div>
+    <div class="menu">
+      <a href="/services.html" id="navServices">Services</a>
+      <a href="/pricing.html" id="navPricing">Tarifs</a>
+      <a href="/quote/" id="navQuote">Contact</a>
+      <a href="/dashboard/" id="navLogin">Clients</a>
+      <button class="lang-btn" id="langBtn">EN</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="bg-photo"></div>
+    <div class="content">
+      <h1 class="title" id="heroTitle">Automate Your Business With AI</h1>
+      <p class="tagline" id="heroSubtitle">We help small and medium businesses reduce costs and increase productivity
+        using custom AI systems.</p>
+
+      <div class="btn-group">
+        <a href="/quote/" class="btn btn-primary" id="btnAudit">Get My Free AI Audit</a>
+        <a href="/services.html" class="btn" id="btnServices">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Scan -->
+  <section class="features">
+    <h2 class="section-title" id="featTitle">Notre Expertise</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 id="c1t">AI Chatbots</h3>
+        <p id="c1d">Automate customer interactions 24/7 with intelligent agents custom-built for your data.</p>
+      </div>
+      <div class="card">
+        <h3 id="c2t">Process Automation</h3>
+        <p id="c2d">Eliminate repetitive manual tasks. Data entry, reporting, and workflows handling.</p>
+      </div>
+      <div class="card">
+        <h3 id="c3t">Custom AI Solutions</h3>
+        <p id="c3d">Solutions built specifically for your unique business needs and infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 PMC Solutions AI | Intelligent Systems used by real businesses.</p>
+  </footer>
+
+  <script>
+    const content = {
+      en: {
+        navServices: "Services",
+        navPricing: "Pricing",
+        navQuote: "Get Quote",
+        heroTitle: "Automate Your Business With AI",
+        heroSubtitle: "We help small and medium businesses reduce costs and increase productivity using custom AI systems.",
+        btnAudit: "Get My Free AI Audit",
+        btnServices: "Explore Services",
+        featTitle: "Our Expertise",
+        c1t: "AI Chatbots",
+        c1d: "Automate customer interactions 24/7 with intelligent agents custom-built for your data.",
+        c2t: "Process Automation",
+        c2d: "Eliminate repetitive manual tasks. Data entry, reporting, and workflows handling.",
+        c3t: "Custom AI Solutions",
+        c3d: "Solutions built specifically for your unique business needs and infrastructure.",
+        switch: "FR"
+      },
+      fr: {
+        navServices: "Services",
+        navPricing: "Tarifs",
+        navQuote: "Devis Gratuit",
+        heroTitle: "Automatisez Votre Business avec l'IA",
+        heroSubtitle: "Nous aidons les PME à réduire les coûts et augmenter la productivité grâce à des systèmes IA sur mesure.",
+        btnAudit: "Obtenir mon Audit Gratuit",
+        btnServices: "Voir les Services",
+        featTitle: "Notre Expertise",
+        c1t: "Chatbots IA",
+        c1d: "Automatisez les interactions clients 24/7 avec des agents intelligents.",
+        c2t: "Automatisation de Processus",
+        c2d: "Éliminez les tâches manuelles répétitives. Saisie de données, rapports, workflows.",
+        c3t: "Solutions IA Sur Mesure",
+        c3d: "Des solutions construites spécifiquement pour vos besoins uniques.",
+        switch: "ES"
+      },
+      es: {
+        navServices: "Servicios",
+        navPricing: "Precios",
+        navQuote: "Cotización",
+        heroTitle: "Automatiza tu Negocio con IA",
+        heroSubtitle: "Ayudamos a PYMES a reducir costos y aumentar productividad con sistemas de IA personalizados.",
+        btnAudit: "Obtener Auditoría Gratis",
+        btnServices: "Ver Servicios",
+        featTitle: "Nuestra Experiencia",
+        c1t: "Chatbots IA",
+        c1d: "Automatiza interacciones con clientes 24/7 con agentes inteligentes.",
+        c2t: "Automatización de Procesos",
+        c2d: "Elimina tareas manuales repetitivas. Entrada de datos, reportes y flujos de trabajo.",
+        c3t: "Soluciones IA a Medida",
+        c3d: "Soluciones construidas específicamente para tus necesidades únicas.",
+        switch: "EN"
+      }
+    };
+
+    let lang = "fr";
+    const $ = (id) => document.getElementById(id);
+
+    function applyLang() {
+      $("navServices").textContent = content[lang].navServices;
+      $("navPricing").textContent = content[lang].navPricing;
+      $("navQuote").textContent = content[lang].navQuote;
+      $("heroTitle").textContent = content[lang].heroTitle;
+      $("heroSubtitle").textContent = content[lang].heroSubtitle;
+      $("btnAudit").textContent = content[lang].btnAudit;
+      $("btnServices").textContent = content[lang].btnServices;
+      $("featTitle").textContent = content[lang].featTitle;
+      $("c1t").textContent = content[lang].c1t;
+      $("c1d").textContent = content[lang].c1d;
+      $("c2t").textContent = content[lang].c2t;
+      $("c2d").textContent = content[lang].c2d;
+      $("c3t").textContent = content[lang].c3t;
+      $("c3d").textContent = content[lang].c3d;
+      $("langBtn").textContent = content[lang].switch;
+    }
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      lang = lang === "en" ? "fr" : (lang === "fr" ? "es" : "en");
+      applyLang();
+    });
+
+    // Default to French on load
+    applyLang();
+  </script>
+  <!-- AI Chat Widget -->
+  <div id="pma-chat-widget">
+    <div id="chat-window" style="display:none;">
+      <div class="chat-header">
+        <span>PMC Assistant AI</span>
+        <button onclick="toggleChat()" style="background:none;border:none;color:#fff;cursor:pointer;">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="msg bot">Bonjour ! Je suis l'IA de PMC Solutions. Comment puis-je vous aider à automatiser votre
+          business ?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Posez votre question..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+    <button id="chat-btn" onclick="toggleChat()">🤖</button>
+  </div>
+
+  <style>
+    /* Chat Widget Styles */
+    #pma-chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      font-family: 'Inter', sans-serif;
+    }
+
+    #chat-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: none;
+      box-shadow: 0 4px 12px rgba(58, 123, 255, 0.4);
+      cursor: pointer;
+      font-size: 30px;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #chat-btn:hover {
+      transform: scale(1.1);
+    }
+
+    #chat-window {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: #0b0f1a;
+      border: 1px solid rgba(58, 123, 255, 0.3);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .chat-header {
+      background: rgba(5, 7, 12, 0.95);
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 80%;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .msg.bot {
+      background: rgba(58, 123, 255, 0.15);
+      color: #cbd6ff;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .msg.user {
+      background: var(--blue);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-input-area {
+      padding: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      gap: 10px;
+      background: #050607;
+    }
+
+    #chatInput {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    #chatInput:focus {
+      border-color: var(--blue);
+    }
+
+    .chat-input-area button {
+      background: var(--blue);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+      if (win.style.display === 'flex') document.getElementById('chatInput').focus();
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Add user message
+      addMessage(text, 'user');
+      input.value = '';
+
+      // Show loading
+      const loadingId = addMessage('...', 'bot');
+
+      try {
+        const response = await fetch('/ai/chat/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await response.json();
+
+        // Remove loading and show response
+        document.getElementById(loadingId).remove();
+        if (data.error) {
+          addMessage("Erreur: " + data.error, 'bot');
+        } else {
+          addMessage(data.reply, 'bot');
+        }
+      } catch (e) {
+        document.getElementById(loadingId).remove();
+        addMessage("Erreur de connexion.", 'bot');
+      }
+    }
+
+    function addMessage(text, sender) {
+      const div = document.createElement('div');
+      div.className = `msg ${sender}`;
+      div.textContent = text;
+      div.id = 'msg-' + Date.now();
+      const container = document.getElementById('chat-messages');
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+      return div.id;
+    }
+  </script>
+</body>
+
+
+</html>

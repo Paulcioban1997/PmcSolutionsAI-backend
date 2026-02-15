@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMC Solutions AI | Request Quote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #3a7bff;
+            --dark: #050607;
+            --card-bg: #0b0f1a;
+            --text-muted: #cbd6ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(58, 123, 255, 0.2);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--blue);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 10px rgba(58, 123, 255, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--blue);
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Demande de Soumission</h2>
+        <div id="successMsg" class="success-message">Votre demande a bien été reçue ! Nous vous contacterons sous peu.
+        </div>
+
+        <form id="quoteForm">
+            <div class="form-group">
+                <label>Nom Complet</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>Entreprise</label>
+                <input type="text" id="company" required>
+            </div>
+            <div class="form-group">
+                <label>Email Professionnel</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" id="phone">
+            </div>
+            <div class="form-group">
+                <label>Service Souhaité</label>
+                <select id="service">
+                    <option value="AI Chatbot">Chatbot IA</option>
+                    <option value="Process Automation">Automatisation de Processus</option>
+                    <option value="Custom AI Solution">Solution IA Sur Mesure</option>
+                    <option value="SaaS Platform">Plateforme SaaS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Description du Projet</label>
+                <textarea id="description" rows="4" required></textarea>
+            </div>
+            <button type="submit">Envoyer la Demande</button>
+        </form>
+        <a href="/" class="back-link">Retour à l'accueil</a>
+    </div>
+
+    <script>
+        document.getElementById('quoteForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                description: document.getElementById('description').value
+            };
+
+            try {
+                const response = await fetch('/submit-quote/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    document.getElementById('successMsg').style.display = 'block';
+                    document.getElementById('quoteForm').reset();
+                } else {
+                    alert('Erreur: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Une erreur est survenue.');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

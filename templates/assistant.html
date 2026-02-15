@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistant PMC Solutions AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2a7bff;
+      --dark: #05070c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    header {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(5, 7, 12, 0.7);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 14px;
+    }
+
+    .brand .ai {
+      color: var(--blue);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 6px 0 10px;
+      font-size: clamp(26px, 4vw, 40px);
+    }
+
+    p {
+      color: #cbd6ff;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: #0b0f1a;
+      border: 1px solid #1f2a44;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: #fff;
+    }
+
+    .cta {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(88, 227, 255, 0.6);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-main {
+      padding: 12px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(88, 227, 255, 0.6);
+      background: linear-gradient(90deg, rgba(255, 40, 40, 0.2), rgba(42, 123, 255, 0.2));
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(10, 14, 25, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">PMC SOLUTIONS <span class="ai">AI</span></div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="btn" id="headerLink" href="/assistant-info.html">Voir la présentation</a>
+      <button class="lang-btn" id="langBtn">EN</button>
+    </div>
+  </header>
+  <div class="wrap">
+    <h1 id="mainTitle">Ce que fait votre assistant client virtuel automatisé</h1>
+    <p id="introText">Il répond aux questions à votre place 24/7, donne les horaires, les prix et les services, et
+      propose un rendez‑vous. Vous gardez le contrôle et l’assistant redirige vers vous pour les cas sensibles.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3 id="card1Title">Réponses instantanées</h3>
+        <p id="card1Text">Les clients reçoivent une réponse claire en quelques secondes, même le soir.</p>
+      </div>
+      <div class="card">
+        <h3 id="card2Title">Prise de rendez‑vous</h3>
+        <p id="card2Text">Il collecte les infos utiles et propose un créneau adapté.</p>
+      </div>
+      <div class="card">
+        <h3 id="card3Title">Moins d’appels</h3>
+        <p id="card3Text">Vous gagnez du temps sur les questions répétitives.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn-main" id="btnDemo" href="/assistant-info.html">Voir la démo expliquée</a>
+      <a class="btn" id="btnPricing" href="/pricing.html">Voir les prix</a>
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      fr: {
+        headerLink: "Voir la présentation",
+        mainTitle: "Ce que fait votre assistant client virtuel automatisé",
+        introText: "Il répond aux questions à votre place 24/7, donne les horaires, les prix et les services, et propose un rendez‑vous. Vous gardez le contrôle et l’assistant redirige vers vous pour les cas sensibles.",
+        card1Title: "Réponses instantanées",
+        card1Text: "Les clients reçoivent une réponse claire en quelques secondes, même le soir.",
+        card2Title: "Prise de rendez‑vous",
+        card2Text: "Il collecte les infos utiles et propose un créneau adapté.",
+        card3Title: "Moins d’appels",
+        card3Text: "Vous gagnez du temps sur les questions répétitives.",
+        btnDemo: "Voir la démo expliquée",
+        btnPricing: "Voir les prix",
+        switch: "EN"
+      },
+      en: {
+        headerLink: "See presentation",
+        mainTitle: "What your automated virtual customer assistant does",
+        introText: "It answers questions for you 24/7, gives hours, prices and services, and proposes an appointment. You stay in control and the assistant redirects to you for sensitive cases.",
+        card1Title: "Instant answers",
+        card1Text: "Customers get a clear answer in seconds, even in the evening.",
+        card2Title: "Appointment booking",
+        card2Text: "It collects useful info and suggests a suitable slot.",
+        card3Title: "Fewer calls",
+        card3Text: "You save time on repetitive questions.",
+        btnDemo: "See explained demo",
+        btnPricing: "See pricing",
+        switch: "ES"
+      },
+      es: {
+        headerLink: "Ver presentación",
+        mainTitle: "Lo que hace tu asistente virtual automatizado",
+        introText: "Responde preguntas por ti 24/7, da horarios, precios y servicios, y propone una cita. Tú mantienes el control y el asistente te redirige casos sensibles.",
+        card1Title: "Respuestas instantáneas",
+        card1Text: "Los clientes reciben una respuesta clara en segundos, incluso por la noche.",
+        card2Title: "Reserva de citas",
+        card2Text: "Recopila información útil y propone un horario adecuado.",
+        card3Title: "Menos llamadas",
+        card3Text: "Ahorras tiempo en preguntas repetitivas.",
+        btnDemo: "Ver demo explicada",
+        btnPricing: "Ver precios",
+        switch: "FR"
+      }
+    };
+
+    let lang = "fr";
+    const $ = (id) => document.getElementById(id);
+
+    function applyLang() {
+      $("headerLink").textContent = content[lang].headerLink;
+      $("mainTitle").textContent = content[lang].mainTitle;
+      $("introText").textContent = content[lang].introText;
+      $("card1Title").textContent = content[lang].card1Title;
+      $("card1Text").textContent = content[lang].card1Text;
+      $("card2Title").textContent = content[lang].card2Title;
+      $("card2Text").textContent = content[lang].card2Text;
+      $("card3Title").textContent = content[lang].card3Title;
+      $("card3Text").textContent = content[lang].card3Text;
+      $("btnDemo").textContent = content[lang].btnDemo;
+      $("btnPricing").textContent = content[lang].btnPricing;
+      $("langBtn").textContent = content[lang].switch;
+    }
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      lang = lang === "fr" ? "en" : (lang === "en" ? "es" : "fr");
+      applyLang();
+    });
+  </script>
+</body>
+
+</html>

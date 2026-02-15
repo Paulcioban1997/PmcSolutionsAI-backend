@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMC Solutions AI | Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --blue:#2a7bff; --red:#ff2a2a; --dark:#05070c; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:'Orbitron',sans-serif; background:var(--dark); color:#fff; }
+    header { padding:18px 22px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:rgba(5,7,12,0.7); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,0.08); z-index:3; }
+    .brand { font-weight:700; letter-spacing:2px; font-size:14px; }
+    .brand .ai { color:var(--blue); }
+    .lang-btn { padding:6px 12px; border-radius:6px; background: rgba(10,14,25,0.8); border:1px solid rgba(255,255,255,0.2); color:#fff; font-family:'Orbitron',sans-serif; cursor:pointer; }
+    .wrap { max-width:1100px; margin:0 auto; padding:18px 24px 60px; }
+    h1 { margin:14px 0 10px; font-size:clamp(26px,4vw,40px); }
+    h2 { margin:26px 0 10px; font-size:clamp(18px,3vw,26px); }
+    p { color:#cbd6ff; line-height:1.6; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:18px; }
+    .card { background:#0b0f1a; border:1px solid #1f2a44; border-radius:12px; padding:18px; }
+    .card h3 { margin:0 0 8px; color:#fff; }
+    .cta { margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { padding:10px 18px; border-radius:8px; border:1px solid rgba(88,227,255,0.6); text-decoration:none; color:#fff; }
+    .btn-main { padding:12px 22px; border-radius:8px; border:1px solid rgba(88,227,255,0.6); background:linear-gradient(90deg, rgba(255,40,40,0.2), rgba(42,123,255,0.2)); color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" id="brand">PMC SOLUTIONS <span class="ai">AI</span></div>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </header>
+
+  <div class="wrap">
+    <h1 id="title">Ce que fait votre assistant client</h1>
+    <p id="intro">Un assistant client automatisé qui répond aux clients à votre place, jour et nuit. Il donne les horaires, les prix, les services, et propose un rendez-vous sans que vous touchiez à rien.</p>
+
+    <div class="grid" id="features">
+      <div class="card">
+        <h3 id="f1t">Réponses 24/7</h3>
+        <p id="f1d">Vos clients obtiennent une réponse immédiate, même la nuit.</p>
+      </div>
+      <div class="card">
+        <h3 id="f2t">Prise de rendez-vous</h3>
+        <p id="f2d">Il collecte les infos nécessaires et propose un créneau.</p>
+      </div>
+      <div class="card">
+        <h3 id="f3t">Réduction des appels</h3>
+        <p id="f3d">Moins d'interruptions, plus de temps pour votre business.</p>
+      </div>
+    </div>
+
+    <h2 id="techTitle">Technologies utilisées (en toute transparence)</h2>
+    <p id="techText">Nous utilisons des modèles de langage (OpenAI) pour comprendre les questions, et des outils d'orchestration (ex: intégrations web, bases de connaissances) pour répondre avec les bonnes informations. Vos données restent sous votre contrôle et l'assistant ne promet rien qui dépasse votre politique interne.</p>
+
+    <h2 id="examplesTitle">Exemples</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 id="e1t">Garage auto</h3>
+        <p id="e1d">« Oui, nous faisons ce service. Voulez-vous un rendez-vous ? »</p>
+      </div>
+      <div class="card">
+        <h3 id="e2t">Clinique esthétique</h3>
+        <p id="e2d">« Consultation recommandée. Quel soin vous intéresse ? »</p>
+      </div>
+      <div class="card">
+        <h3 id="e3t">Restaurant</h3>
+        <p id="e3d">« Nous sommes ouverts jusqu'à 22h. Souhaitez-vous réserver ? »</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn-main" id="ctaMain" href="assistant.html">Tester l'assistant</a>
+      <a class="btn" id="ctaPrice" href="pricing.html">Voir les prix</a>
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      fr: {
+        brand: "PMC SOLUTIONS <span class='ai'>AI</span>",
+        title: "Ce que fait votre assistant client",
+        intro: "Un assistant client automatisé qui répond aux clients à votre place, jour et nuit. Il donne les horaires, les prix, les services, et propose un rendez-vous sans que vous touchiez à rien.",
+        f1t: "Réponses 24/7",
+        f1d: "Vos clients obtiennent une réponse immédiate, même la nuit.",
+        f2t: "Prise de rendez-vous",
+        f2d: "Il collecte les infos nécessaires et propose un créneau.",
+        f3t: "Réduction des appels",
+        f3d: "Moins d'interruptions, plus de temps pour votre business.",
+        techTitle: "Technologies utilisées (en toute transparence)",
+        techText: "Nous utilisons des modèles de langage (OpenAI) pour comprendre les questions, et des outils d'orchestration (ex: intégrations web, bases de connaissances) pour répondre avec les bonnes informations. Vos données restent sous votre contrôle et l'assistant ne promet rien qui dépasse votre politique interne.",
+        examplesTitle: "Exemples",
+        e1t: "Garage auto",
+        e1d: "« Oui, nous faisons ce service. Voulez-vous un rendez-vous ? »",
+        e2t: "Clinique esthétique",
+        e2d: "« Consultation recommandée. Quel soin vous intéresse ? »",
+        e3t: "Restaurant",
+        e3d: "« Nous sommes ouverts jusqu'à 22h. Souhaitez-vous réserver ? »",
+        ctaMain: "Tester l'assistant",
+        ctaPrice: "Voir les prix",
+        switch: "EN"
+      },
+      en: {
+        brand: "PMC SOLUTIONS <span class='ai'>AI</span>",
+        title: "What your customer assistant does",
+        intro: "An automated customer assistant that replies for you day and night. It gives hours, prices, services, and proposes an appointment without you lifting a finger.",
+        f1t: "24/7 replies",
+        f1d: "Your customers get an instant response, even at night.",
+        f2t: "Appointment booking",
+        f2d: "It collects the needed info and suggests a time slot.",
+        f3t: "Fewer calls",
+        f3d: "Fewer interruptions, more time for your business.",
+        techTitle: "Technologies used (full transparency)",
+        techText: "We use language models (OpenAI) to understand questions, and orchestration tools (e.g. web integrations, knowledge bases) to answer with the right information. Your data stays under your control and the assistant never promises beyond your internal policy.",
+        examplesTitle: "Examples",
+        e1t: "Auto shop",
+        e1d: "“Yes, we do that service. Would you like an appointment?”",
+        e2t: "Aesthetic clinic",
+        e2d: "“A consultation is recommended. Which treatment are you interested in?”",
+        e3t: "Restaurant",
+        e3d: "“We’re open until 10pm. Would you like to book a table?”",
+        ctaMain: "Try the assistant",
+        ctaPrice: "See pricing",
+        switch: "ES"
+      },
+      es: {
+        brand: "PMC SOLUTIONS <span class='ai'>AI</span>",
+        title: "Lo que hace tu asistente de clientes",
+        intro: "Un asistente automatizado que responde por ti día y noche. Da horarios, precios, servicios y propone una cita sin que tengas que hacer nada.",
+        f1t: "Respuestas 24/7",
+        f1d: "Tus clientes reciben una respuesta inmediata, incluso de noche.",
+        f2t: "Reservas",
+        f2d: "Recoge la información necesaria y propone un horario.",
+        f3t: "Menos llamadas",
+        f3d: "Menos interrupciones, más tiempo para tu negocio.",
+        techTitle: "Tecnologías usadas (total transparencia)",
+        techText: "Usamos modelos de lenguaje (OpenAI) para entender preguntas y herramientas de orquestación (p. ej. integraciones web, bases de conocimiento) para responder con la información correcta. Tus datos quedan bajo tu control y el asistente no promete nada fuera de tu política interna.",
+        examplesTitle: "Ejemplos",
+        e1t: "Taller mecánico",
+        e1d: "“Sí, hacemos ese servicio. ¿Quieres una cita?”",
+        e2t: "Clínica estética",
+        e2d: "“Se recomienda consulta. ¿Qué tratamiento te interesa?”",
+        e3t: "Restaurante",
+        e3d: "“Abrimos hasta las 10pm. ¿Quieres reservar?”",
+        ctaMain: "Probar el asistente",
+        ctaPrice: "Ver precios",
+        switch: "FR"
+      }
+    };
+
+    let lang = "fr";
+    const $ = (id) => document.getElementById(id);
+
+    function applyLang() {
+      $("brand").innerHTML = content[lang].brand;
+      $("title").textContent = content[lang].title;
+      $("intro").textContent = content[lang].intro;
+      $("f1t").textContent = content[lang].f1t;
+      $("f1d").textContent = content[lang].f1d;
+      $("f2t").textContent = content[lang].f2t;
+      $("f2d").textContent = content[lang].f2d;
+      $("f3t").textContent = content[lang].f3t;
+      $("f3d").textContent = content[lang].f3d;
+      $("techTitle").textContent = content[lang].techTitle;
+      $("techText").textContent = content[lang].techText;
+      $("examplesTitle").textContent = content[lang].examplesTitle;
+      $("e1t").textContent = content[lang].e1t;
+      $("e1d").textContent = content[lang].e1d;
+      $("e2t").textContent = content[lang].e2t;
+      $("e2d").textContent = content[lang].e2d;
+      $("e3t").textContent = content[lang].e3t;
+      $("e3d").textContent = content[lang].e3d;
+      $("ctaMain").textContent = content[lang].ctaMain;
+      $("ctaPrice").textContent = content[lang].ctaPrice;
+      $("langBtn").textContent = content[lang].switch;
+    }
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      lang = lang === "fr" ? "en" : (lang === "en" ? "es" : "fr");
+      applyLang();
+    });
+
+    applyLang();
+  </script>
+</body>
+</html>

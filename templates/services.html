@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PMC Solutions AI | Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #3a7bff;
+            --dark: #050607;
+            --card-bg: #0b0f1a;
+            --text-muted: #cbd6ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(58, 123, 255, 0.2);
+            padding: 40px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--blue);
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: var(--blue);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Nos Services</h1>
+        <p style="color:var(--text-muted)">Solutions IA intelligentes pour transformer votre entreprise.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>AI Chatbots</h3>
+            <p>Service client automatisé 24/7. Réponse instantanée aux questions fréquentes, qualification de leads et
+                prise de rendez-vous automatique.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>Automatisation</h3>
+            <p>Optimisation des processus internes. Saisie de données, gestion des emails, génération de rapports et
+                workflows administratifs.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>SaaS & Web IA</h3>
+            <p>Développement de plateformes web intégrant l'IA. Tableaux de bord, outils d'analyse et portails clients
+                sécurisés.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Data & Analytics</h3>
+            <p>Analyse prédictive et visualisation de données pour prendre de meilleures décisions basées sur vos
+                propres chiffres.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h3>Sécurité IA</h3>
+            <p>Architecture sécurisée, protection des données et conformité aux normes (GDPR, etc.) pour vos systèmes
+                intelligents.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>Sur Mesure</h3>
+            <p>Vous avez un besoin spécifique ? Nous concevons une solution 100% adaptée à votre infrastructure et vos
+                objectifs.</p>
+        </div>
+    </div>
+
+    <a href="/" class="back-link">Retour à l'accueil</a>
+
+</body>
+
+</html>

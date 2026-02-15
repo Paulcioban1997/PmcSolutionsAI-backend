@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PMC Solutions AI | Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #3a7bff;
+            --dark: #050607;
+            --card-bg: #0b0f1a;
+            --text-muted: #cbd6ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            padding: 80px 20px;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid rgba(58, 123, 255, 0.2);
+            padding: 60px 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0 0 40px;
+            color: var(--blue);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+        .socials {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            transform: translateY(-3px);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Contact</h1>
+
+        <div class="contact-item">
+            📧 <a href="mailto:paulmircea15@gmail.com">paulmircea15@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            📞 <a href="tel:514-295-5720">514-295-5720</a>
+        </div>
+        <div class="contact-item">
+            💻 <a href="https://github.com/Paulcioban1997" target="_blank">GitHub</a>
+        </div>
+        <div class="contact-item">
+            🌐 <a href="https://linkedin.com/in/mircea-paul-cioban-ba85422bb" target="_blank">LinkedIn</a>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="/quote/" class="btn">Demander un Devis</a>
+        </div>
+
+        <a href="/" class="back-link">Retour à l'accueil</a>
+    </div>
+
+</body>
+
+</html>
